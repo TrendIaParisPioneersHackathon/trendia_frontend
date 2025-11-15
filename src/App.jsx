@@ -141,23 +141,6 @@ function App() {
               Start Creating
               <span className="cta-arrow">→</span>
             </button>
-            <button className="cta-secondary">
-              See Examples
-            </button>
-          </div>
-          <div className="hero-social-proof">
-            <div className="social-proof-item">
-              <span className="proof-number">10K+</span>
-              <span className="proof-label">Videos Created</span>
-            </div>
-            <div className="social-proof-item">
-              <span className="proof-number">98%</span>
-              <span className="proof-label">Satisfaction Rate</span>
-            </div>
-            <div className="social-proof-item">
-              <span className="proof-number">3x</span>
-              <span className="proof-label">Engagement Boost</span>
-            </div>
           </div>
         </div>
         <div className="hero-visual">

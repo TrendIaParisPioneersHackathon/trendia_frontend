@@ -281,7 +281,7 @@ body {
 .platform-section {
     min-height: 100vh;
     padding: var(--spacing-3xl) var(--spacing-md);
-    background: var(--color-bg-light);
+    background: transparent;
     position: relative;
 }
 
@@ -294,13 +294,13 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
-    color: var(--color-text-dark);
+    color: var(--color-text-light);
     margin-bottom: var(--spacing-md);
 }
 
 .section-subtitle {
     font-size: 1.125rem;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
     margin: 0 auto;
 }

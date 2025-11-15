@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+
+# Local env files - these should NOT be copied into Docker
+.env
+.env.local
+.env*.local
+
+# Build output (will be generated in Docker)
+dist
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+README.md
