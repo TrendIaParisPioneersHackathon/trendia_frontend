@@ -122,13 +122,59 @@ function App() {
   const canSubmit = avatar && product && description && !status
 
   return (
-    <div className="container">
-      <div className="header">
-        <h1>✨ trendIA</h1>
-        <p>AI-Powered Promotional Video Generator</p>
-      </div>
+    <div className="app">
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="badge-icon">✨</span>
+            <span className="badge-text">AI-Powered Content Creation</span>
+          </div>
+          <h1 className="hero-title">
+            We turn your brand into viral social media content that rides trends before they peak
+          </h1>
+          <p className="hero-subtitle">
+            TrendIa uses cutting-edge AI to create engaging promotional videos that capture attention and drive conversions. Stay ahead of the curve with content that trends.
+          </p>
+          <div className="hero-cta">
+            <button className="cta-primary" onClick={() => document.getElementById('platform').scrollIntoView({ behavior: 'smooth' })}>
+              Start Creating
+              <span className="cta-arrow">→</span>
+            </button>
+            <button className="cta-secondary">
+              See Examples
+            </button>
+          </div>
+          <div className="hero-social-proof">
+            <div className="social-proof-item">
+              <span className="proof-number">10K+</span>
+              <span className="proof-label">Videos Created</span>
+            </div>
+            <div className="social-proof-item">
+              <span className="proof-number">98%</span>
+              <span className="proof-label">Satisfaction Rate</span>
+            </div>
+            <div className="social-proof-item">
+              <span className="proof-number">3x</span>
+              <span className="proof-label">Engagement Boost</span>
+            </div>
+          </div>
+        </div>
+        <div className="hero-visual">
+          <div className="hero-gradient-blob blob-1"></div>
+          <div className="hero-gradient-blob blob-2"></div>
+          <div className="hero-gradient-blob blob-3"></div>
+        </div>
+      </section>
 
-      <div className="card">
+      {/* Platform Section */}
+      <section id="platform" className="platform-section">
+        <div className="section-header">
+          <h2 className="section-title">Create Your Viral Content</h2>
+          <p className="section-subtitle">Upload your assets and let AI create stunning promotional videos in minutes</p>
+        </div>
+
+        <div className="card">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>👤 Avatar / Person Image</label>
@@ -301,7 +347,8 @@ function App() {
             <strong>❌ Error:</strong> {error}
           </div>
         )}
-      </div>
+        </div>
+      </section>
     </div>
   )
 }
