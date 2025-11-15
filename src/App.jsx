@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
 const API_URL =
-  import.meta.env.VITE_API_URL |
+  import.meta.env.VITE_API_URL ||
   "https://trendiabackend-154170216171.europe-west1.run.app";
 
 function App() {
