@@ -13,6 +13,8 @@ function App() {
   const [videoUrl, setVideoUrl] = useState(null)
   const [error, setError] = useState(null)
   const [progress, setProgress] = useState(0)
+  const [workflowSteps, setWorkflowSteps] = useState(null)
+  const [currentStep, setCurrentStep] = useState(null)
 
   const avatarInputRef = useRef(null)
   const productInputRef = useRef(null)
@@ -97,6 +99,8 @@ function App() {
         const data = await response.json()
 
         setProgress(data.progress || 0)
+        setWorkflowSteps(data.steps || null)
+        setCurrentStep(data.current_step || null)
 
         if (data.status === 'completed') {
           clearInterval(interval)
@@ -222,11 +226,60 @@ function App() {
         {status === 'processing' && (
           <div className="progress-container">
             <div className="progress-text">
-              Generating... {progress}%
+              Génération en cours... {progress}%
             </div>
             <div className="progress-bar">
               <div className="progress-fill" style={{ width: `${progress}%` }}></div>
             </div>
+
+            {workflowSteps && (
+              <div className="workflow-steps">
+                <div className={`workflow-step ${workflowSteps.script?.status === 'completed' ? 'completed' : workflowSteps.script?.status === 'processing' ? 'processing' : 'pending'}`}>
+                  <div className="step-icon">
+                    {workflowSteps.script?.status === 'completed' ? '✅' :
+                     workflowSteps.script?.status === 'processing' ? '🔄' : '⏳'}
+                  </div>
+                  <div className="step-content">
+                    <div className="step-label">{workflowSteps.script?.label}</div>
+                    <div className="step-status">
+                      {workflowSteps.script?.status === 'completed' ? 'Terminé' :
+                       workflowSteps.script?.status === 'processing' ? 'En cours...' : 'En attente'}
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`workflow-step ${workflowSteps.clips?.status === 'completed' ? 'completed' : workflowSteps.clips?.status === 'processing' ? 'processing' : 'pending'}`}>
+                  <div className="step-icon">
+                    {workflowSteps.clips?.status === 'completed' ? '✅' :
+                     workflowSteps.clips?.status === 'processing' ? '🔄' : '⏳'}
+                  </div>
+                  <div className="step-content">
+                    <div className="step-label">{workflowSteps.clips?.label}</div>
+                    <div className="step-status">
+                      {workflowSteps.clips?.status === 'completed' ? 'Terminé' :
+                       workflowSteps.clips?.status === 'processing' ?
+                         `Clip ${workflowSteps.clips?.current || 0}/${workflowSteps.clips?.total || 0}` :
+                         'En attente'}
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`workflow-step ${workflowSteps.concat?.status === 'completed' ? 'completed' : workflowSteps.concat?.status === 'processing' ? 'processing' : 'pending'}`}>
+                  <div className="step-icon">
+                    {workflowSteps.concat?.status === 'completed' ? '✅' :
+                     workflowSteps.concat?.status === 'processing' ? '🔄' : '⏳'}
+                  </div>
+                  <div className="step-content">
+                    <div className="step-label">{workflowSteps.concat?.label}</div>
+                    <div className="step-status">
+                      {workflowSteps.concat?.status === 'completed' ? 'Terminé' :
+                       workflowSteps.concat?.status === 'processing' ? 'En cours...' : 'En attente'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="spinner"></div>
           </div>
         )}
